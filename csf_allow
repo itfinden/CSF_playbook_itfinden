@@ -30,8 +30,8 @@
       command: "/usr/sbin/csf -r"
       when: dyndns.changed
 
-    - name: Ensure a job that runs at 2 and 5 exists. Creates an entry like "0 5,2 * * ls -alh > /dev/null"
+    - name: Permitir a los ingenieros entrar desde dyndns especificos
       ansible.builtin.cron:
-      name: "Access Remote"
-      minute: "5"
-      job: "wget -O /root/csf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/csf_allow && ansible-playbook /root/csf.yml  > /dev/null"
+        name: "Access Remote Cron"
+        minute: "5"
+        job: "wget -O /root/csf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/csf_allow && ansible-playbook /root/csf.yml  > /dev/null"
