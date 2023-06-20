@@ -13,11 +13,10 @@
         insertafter: "Advanced"
         marker: "### {mark} ITFINDEN ACCESS CONFIG###"
         content: |
-           mihost.dyndns.com
            friedrich.vonmuhlenbrock.com
            itfinden.ddns.net
            friedrich.itfinden.com
-           luisnunez.itfinden.com
+           4bf104aabb1f.sn.mynetname.net
       when: csf.stat.exists
       register: dyndns
 
