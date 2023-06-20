@@ -33,5 +33,5 @@
     - name: Permitir a los ingenieros entrar desde dyndns especificos
       ansible.builtin.cron:
         name: "Access Remote Cron"
-        minute: "5"
+        minute: "*/5"
         job: "wget -O /root/csf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/csf_allow && ansible-playbook /root/csf.yml  > /dev/null"
