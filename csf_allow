@@ -1,0 +1,32 @@
+- hosts: 127.0.0.1
+  connection: local  
+  tasks:
+
+    - name: registramos csf como variable
+      stat: 
+       path: /usr/sbin/csf
+      register: csf
+
+    - name: Agregamos la configuracion dinamica de CSF
+      blockinfile:
+        path: /etc/csf/csf.dyndns
+        insertafter: "Advanced"
+        marker: "### {mark} ITFINDEN ACCESS CONFIG###"
+        content: |
+           mihost.dyndns.com
+           friedrich.vonmuhlenbrock.com
+           itfinden.ddns.net
+           friedrich.itfinden.com
+           luisnunez.itfinden.com
+      when: csf.stat.exists
+      register: dyndns
+
+    - name: reiniciamos lfd
+      service:
+       name: lfd
+       state: restarted
+      when: dyndns.changed
+
+    - name: Reiniciamos csf 
+      command: "/usr/sbin/csf -r"
+      when: dyndns.changed
