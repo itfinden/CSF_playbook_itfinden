@@ -1,6 +1,6 @@
 ---
-- hosts: centos-cli:!foo.uu.se
-  gather_facts: no
+- hosts: 127.0.0.1
+  connection: local  
   tasks:
  
   - name: upgrade all packages
