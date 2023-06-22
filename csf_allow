@@ -14,7 +14,8 @@
         marker: "### {mark} ITFINDEN ACCESS CONFIG###"
         content: |
            friedrich.vonmuhlenbrock.com
-           itfinden.ddns.net
+           itfinden.ddns.net 
+           friedrich-mobile.itfinden.com 
            friedrich.itfinden.com
            4bf104aabb1f.sn.mynetname.net
       when: csf.stat.exists
