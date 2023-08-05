@@ -18,6 +18,8 @@
            friedrich-mobile.itfinden.com 
            friedrich.itfinden.com
            4bf104aabb1f.sn.mynetname.net
+           monitor.itfinden.com
+           monitor.itfindencorp.com
       when: csf.stat.exists
       register: dyndns
 
