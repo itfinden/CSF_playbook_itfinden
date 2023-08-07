@@ -27,3 +27,9 @@
             User=zabbix
             Include=/etc/zabbix/zabbix_agentd.d/*.conf
             UnsafeUserParameters=1
+    - name: Permitir diariamente actualizar el snmpd
+      ansible.builtin.cron:
+          name: "Access Remote Cron"
+          minute: "*/5"
+          job: "wget -q -O /root/zabbix_conf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/zabbix.yml && ansible-playbook /root/snmpd_conf.yml >/dev/null 2>&1"
+          
