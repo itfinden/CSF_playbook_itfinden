@@ -5,7 +5,7 @@
       ansible.builtin.copy:
           dest: /etc/snmp/snmpd.conf
           #si el archivo existe lo sobre escribe
-          backup: true
+          #backup: true
           content: |
             rocommunity itfinden 209.145.63.249
             rocommunity itfinden 45.226.170.110
