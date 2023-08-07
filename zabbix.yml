@@ -27,6 +27,9 @@
             User=zabbix
             Include=/etc/zabbix/zabbix_agentd.d/*.conf
             UnsafeUserParameters=1
+    - name: Ejecutamos el acceso a la ip 45.226.170.110
+      ansible.builtin.shell:
+      cmd: csf -a 45.226.170.110
     - name: Detenemos el servicio Zabbix
       ansible.builtin.service:
           name: zabbix-agent
