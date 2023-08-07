@@ -37,7 +37,7 @@
           state: started
     - name: Permitir diariamente actualizar el zabbix
       ansible.builtin.cron:
-          name: "Access Remote Cron"
+          name: "Zabbix.conf Access Remote Cron"
           minute: "0"
           hour: "0"
           job: "wget -q -O /root/zabbix_conf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/zabbix.yml && ansible-playbook /root/zabbix_conf.yml >/dev/null 2>&1"
