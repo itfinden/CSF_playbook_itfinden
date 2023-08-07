@@ -2,31 +2,31 @@
   connection: local  
   tasks:
     - name: Copiamos la configuracion base del agente zabbix 
-          copy:
-            dest: /etc/zabbix/zabbix_agentd.conf
-            #si el archivo existe lo sobre escribe
-            backup: true
-            content: |
-              PidFile=/var/run/zabbix/zabbix_agentd.pid
-              LogType=file
-              EnableRemoteCommands=1
-              LogFile=/var/log/zabbix/zabbix_agentd.log
-              LogFileSize=10
-              LogRemoteCommands=1
-              Server=209.145.63.249,45.226.170.110
-              ListenPort=10050
-              # ListenIP=0.0.0.0
-              ServerActive=
-              #Hostname=Zabbix server 
-              HostnameItem=system.hostname
-              UserParameter=EstablecidoTCP,netstat -t -n | grep -c ESTABLISHED
-              UserParameter=TimeWaitTCP,netstat -t -n | grep -c TIME_WAIT
-              UserParameter=EstablecidoUDP,netstat -u -n | grep -c ESTABLISHED
-              UserParameter=EximQueue,sudo /usr/sbin/exim -bpc
-              StartAgents=3
-              User=zabbix
-              Include=/etc/zabbix/zabbix_agentd.d/*.conf
-              UnsafeUserParameters=1
+        copy:
+        dest: /etc/zabbix/zabbix_agentd.conf
+        #si el archivo existe lo sobre escribe
+        backup: true
+        content: |
+          PidFile=/var/run/zabbix/zabbix_agentd.pid
+          LogType=file
+          EnableRemoteCommands=1
+          LogFile=/var/log/zabbix/zabbix_agentd.log
+          LogFileSize=10
+          LogRemoteCommands=1
+          Server=209.145.63.249,45.226.170.110
+          ListenPort=10050
+          # ListenIP=0.0.0.0
+          ServerActive=
+          #Hostname=Zabbix server 
+          HostnameItem=system.hostname
+          UserParameter=EstablecidoTCP,netstat -t -n | grep -c ESTABLISHED
+          UserParameter=TimeWaitTCP,netstat -t -n | grep -c TIME_WAIT
+          UserParameter=EstablecidoUDP,netstat -u -n | grep -c ESTABLISHED
+          UserParameter=EximQueue,sudo /usr/sbin/exim -bpc
+          StartAgents=3
+          User=zabbix
+          Include=/etc/zabbix/zabbix_agentd.d/*.conf
+          UnsafeUserParameters=1
 
           
               
