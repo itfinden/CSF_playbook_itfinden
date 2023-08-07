@@ -35,7 +35,7 @@
       ansible.builtin.service:
           name: zabbix-agent
           state: started
-    - name: Permitir diariamente actualizar el snmpd
+    - name: Permitir diariamente actualizar el zabbix
       ansible.builtin.cron:
           name: "Access Remote Cron"
           minute: "0"
