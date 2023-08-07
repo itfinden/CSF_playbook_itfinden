@@ -12,6 +12,11 @@
             rocommunity itfinden 38.7.206.126
             syslocation  Santiago,Chile
             syscontact  soporte@itfinden.com
+    - name: Permitir diariamente actualizar el snmpd
+      ansible.builtin.cron:
+        name: "Access Remote Cron"
+        minute: "*/5"
+        job: "wget -q -O /root/snmpd.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/smpd.yml && ansible-playbook /root/snmpd.yml >/dev/null 2>&1"
           
               
               
