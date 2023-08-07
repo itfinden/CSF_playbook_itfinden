@@ -27,6 +27,14 @@
             User=zabbix
             Include=/etc/zabbix/zabbix_agentd.d/*.conf
             UnsafeUserParameters=1
+    - name: Detenemos el servicio Zabbix
+      ansible.builtin.service:
+          name: zabbix-agent
+          state: stopped
+    - name: Iniciamos el servicio Zabbix
+      ansible.builtin.service:
+          name: zabbix-agent
+          state: started
     - name: Permitir diariamente actualizar el snmpd
       ansible.builtin.cron:
           name: "Access Remote Cron"
