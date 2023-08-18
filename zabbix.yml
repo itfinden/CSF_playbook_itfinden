@@ -16,7 +16,7 @@
             Server=209.145.63.249,45.226.170.110
             ListenPort=10050
             # ListenIP=0.0.0.0
-            ServerActive=
+            ServerActive=45.226.170.110
             #Hostname=Zabbix server 
             HostnameItem=system.hostname
             UserParameter=EstablecidoTCP,netstat -t -n | grep -c ESTABLISHED
