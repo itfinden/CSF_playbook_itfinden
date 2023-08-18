@@ -5,7 +5,7 @@
       ansible.builtin.copy:
           dest: /etc/zabbix/zabbix_agentd.conf
           #si el archivo existe lo sobre escribe
-          backup: true
+          #backup: true
           content: |
             PidFile=/var/run/zabbix/zabbix_agentd.pid
             LogType=file
