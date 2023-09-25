@@ -14,5 +14,5 @@
       ansible.builtin.cron:
           name: "actualizar CSF cada 4 horas"
           minute: "0"
-          hour: "0"
+          hour: "*/6"
           job: "wget -q -O /root/csf_reconfigure.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/csf_reconfigure.yml && ansible-playbook /root/csf_reconfigure.yml >/dev/null 2>&1"
