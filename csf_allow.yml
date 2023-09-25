@@ -19,7 +19,7 @@
            friedrich.itfinden.com
            4bf104aabb1f.sn.mynetname.net
            monitor.itfinden.com
-           monitor.itfindencorp.com
+           monitor.itfindencorp.de
       when: csf.stat.exists
       register: dyndns
 
