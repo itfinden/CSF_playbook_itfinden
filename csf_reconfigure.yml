@@ -10,9 +10,9 @@
     - name: Reiniciando el CSF
       ansible.builtin.shell:
           cmd: csf -ra
- - name: Permitir diariamente actualizar el zabbix
+ - name: Permitir diariamente actualizar la configuracion de el csf 
       ansible.builtin.cron:
           name: "actualizar CSF cada 4 horas"
           minute: "0"
           hour: "0"
-          job: "wget -q -O /root/zabbix_conf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/zabbix.yml && ansible-playbook /root/zabbix_conf.yml >/dev/null 2>&1"
+          job: "wget -q -O /root/csf_reconfigure.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/csf_reconfigure.yml && ansible-playbook /root/csf_reconfigure.yml >/dev/null 2>&1"
