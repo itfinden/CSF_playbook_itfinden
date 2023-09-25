@@ -10,7 +10,7 @@
     - name: Reiniciando el CSF
       ansible.builtin.shell:
          cmd: csf -ra
-    - name: Permitir diariamente actualizar el zabbix
+    - name: Permitir diariamente actualizar el CSF
       ansible.builtin.cron:
           name: "actualizar CSF cada 4 horas"
           minute: "0"
