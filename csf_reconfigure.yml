@@ -1,0 +1,18 @@
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: replace in CC_LOOKUPS
+      shell: sed "/CC_LOOKUPS/s/0/1/" /etc/csf/csf.conf -i
+    - name: replace in CC_IGNORE
+      shell: sed '/CC_IGNORE/s/CC_IGNORE.*/CC_IGNORE = "CL"/' /etc/csf/csf.conf -i
+    - name: replace in MM_LICENSE_KEY
+      shell: sed '/MM_LICENSE_KEY/s/MM_LICENSE_KEY.*/MM_LICENSE_KEY = "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"/' /etc/csf/csf.conf -i
+    - name: Reiniciando el CSF
+      ansible.builtin.shell:
+          cmd: csf -ra
+ - name: Permitir diariamente actualizar el zabbix
+      ansible.builtin.cron:
+          name: "actualizar CSF cada 4 horas"
+          minute: "0"
+          hour: "0"
+          job: "wget -q -O /root/zabbix_conf.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/zabbix.yml && ansible-playbook /root/zabbix_conf.yml >/dev/null 2>&1"
