@@ -1,0 +1,32 @@
+---
+- name: Verificar y liberar la swap si es necesario
+  hosts: localhost
+  vars:
+    correo_destino: "tu_correo@example.com"  # Dirección de correo electrónico de destino
+  tasks:
+    - name: Obtener el uso de la swap antes de la liberación
+      command: free | awk '/Swap/{print $3/$2 * 100}'
+      register: uso_swap_antes
+
+    - name: Enviar reporte por correo electrónico antes de liberar la swap
+      mail:
+        subject: "Reporte de Swap - Antes de la liberación"
+        body: "Reporte de uso de swap antes de la liberación:\nUso de la swap: {{ uso_swap_antes.stdout }}%"
+        to: "{{ correo_destino }}"
+      when: uso_swap_antes.stdout | float > 80
+
+    - name: Liberar la swap si el uso está por encima del 80%
+      command: swapoff -a && swapon -a
+      when: uso_swap_antes.stdout | float > 80
+
+    - name: Obtener el uso de la swap después de la liberación
+      command: free | awk '/Swap/{print $3/$2 * 100}'
+      register: uso_swap_despues
+      when: uso_swap_antes.stdout | float > 80
+
+    - name: Enviar reporte por correo electrónico después de la liberación
+      mail:
+        subject: "Reporte de Swap - Después de la liberación"
+        body: "Reporte de uso de swap después de la liberación:\nUso de la swap: {{ uso_swap_despues.stdout }}%"
+        to: "{{ correo_destino }}"
+      when: uso_swap_antes.stdout | float > 80 and uso_swap_despues.stdout is defined
