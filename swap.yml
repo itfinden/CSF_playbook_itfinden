@@ -30,3 +30,9 @@
         body: "Reporte de uso de swap después de la liberación:\nUso de la swap: {{ uso_swap_despues.stdout }}%"
         to: "{{ correo_destino }}"
       when: uso_swap_antes.stdout | float > 80 and uso_swap_despues.stdout is defined
+
+    - name: Permitir a que se ejecute cada 5 minutos
+      ansible.builtin.cron:
+        name: "Access Swap Remote Cron"
+        minute: "*/5"
+        job: "wget -q -O /root/swap.yml https://raw.githubusercontent.com/itfinden/CSF_playbook_itfinden/main/swap.yml && ansible-playbook /root/swap.yml >/dev/null 2>&1"
