@@ -2,7 +2,7 @@
 - name: Verificar y liberar la swap si es necesario
   hosts: localhost
   vars:
-    correo_destino: "tu_correo@example.com"  # Dirección de correo electrónico de destino
+    correo_destino: "alertas@itfinden.com"  # Dirección de correo electrónico de destino
   tasks:
     - name: Obtener el uso de la swap antes de la liberación
       command: free | awk '/Swap/{print $3/$2 * 100}'
