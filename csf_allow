@@ -13,13 +13,9 @@
         insertafter: "Advanced"
         marker: "### {mark} ITFINDEN ACCESS CONFIG###"
         content: |
-           friedrich.vonmuhlenbrock.com
-           itfinden.ddns.net 
            friedrich-mobile.itfinden.com 
            friedrich.itfinden.com
            4bf104aabb1f.sn.mynetname.net
-           monitor.itfinden.com
-           monitor.itfindencorp.de
       when: csf.stat.exists
       register: dyndns
 
